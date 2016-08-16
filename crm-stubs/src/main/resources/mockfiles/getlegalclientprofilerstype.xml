@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GetLegalClientProfileRs>
+    <RqUID>00000000000000000000000000000012</RqUID>
+    <RqTm>2016-12-25T23:23:23Z</RqTm>
+    <SPName>urn:sbrfsystems:99-crmorg</SPName>
+    <SystemId>urn:sbrfsystems:99-ufs</SystemId>
+    <Method>IANUAMRMGetClientInfoResponse</Method>
+    <Status>
+        <StatusCode>0</StatusCode>
+        <ServerStatusCode>ServerStatusCode</ServerStatusCode>
+        <Severity>WARN</Severity>
+        <StatusDesc>StatusDesc</StatusDesc>
+    </Status>
+    <Message>
+        <ListOfAccount>
+            <AccountInfo>
+                <Id>test</Id>
+                <MDMId>test</MDMId>
+                <Name>test</Name>
+                <VKO>test</VKO>
+                <VKOPhone>test</VKOPhone>
+                <VKOEmail>test</VKOEmail>
+                <SBRFINN>test</SBRFINN>
+                <SBRFKPP>test</SBRFKPP>
+                <OGRN>test</OGRN>
+                <FullName>test</FullName>
+                <SBRFKindActivity>test</SBRFKindActivity>
+            </AccountInfo>
+            <AccountInfo>
+                <Id>test2</Id>
+                <MDMId>test2</MDMId>
+                <Name>test2</Name>
+                <VKO>test2</VKO>
+                <VKOPhone>test2</VKOPhone>
+                <VKOEmail>test2</VKOEmail>
+                <SBRFINN>test2</SBRFINN>
+                <SBRFKPP>test2</SBRFKPP>
+                <OGRN>test2</OGRN>
+                <FullName>test2</FullName>
+                <SBRFKindActivity>test2</SBRFKindActivity>
+            </AccountInfo>
+        </ListOfAccount>
+    </Message>
+</GetLegalClientProfileRs>

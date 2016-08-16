@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GetLegalClientListRs>
+    <RqUID>00000000000000000000000000000012</RqUID>
+    <RqTm>2016-12-25T23:23:23Z</RqTm>
+    <SPName>urn:sbrfsystems:99-crmorg</SPName>
+    <SystemId>urn:sbrfsystems:99-ufs</SystemId>
+    <Method>IANUAGetClientsResponse</Method>
+    <Status>
+        <StatusCode>0</StatusCode>
+        <ServerStatusCode>ServerStatusCode</ServerStatusCode>
+        <Severity>WARN</Severity>
+        <StatusDesc>StatusDesc</StatusDesc>
+    </Status>
+    <Message>
+        <ListOfAccountInfo>
+            <AccountInfo>
+                <Id>test1</Id>
+                <MDMId>test1</MDMId>
+                <Name>test1</Name>
+                <SBRFINN>test1</SBRFINN>
+                <SBRFKPP>test1</SBRFKPP>
+                <OGRN>test1</OGRN>
+                <OPF>test1</OPF>
+            </AccountInfo>
+            <AccountInfo>
+                <Id>test2</Id>
+                <MDMId>test2</MDMId>
+                <Name>test2</Name>
+                <SBRFINN>test2</SBRFINN>
+                <SBRFKPP>test2</SBRFKPP>
+                <OGRN>test2</OGRN>
+                <OPF>test2</OPF>
+            </AccountInfo>
+        </ListOfAccountInfo>
+    </Message>
+</GetLegalClientListRs>

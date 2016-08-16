@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ru.sbrf.efs</groupId>
+        <artifactId>km-cib-stubs</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>database-module</artifactId>
+    <name>database-module</name>
+    <url>http://maven.apache.org</url>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <start-class>ru.sbrf.rmkmbh.database.App</start-class>
+        <generated.package.name>ru.sbrf.service</generated.package.name>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- H2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/logback.xml</exclude>
+                        <exclude>**/application.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--<version>${spring.boot.version}</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<goals>-->
+            <!--<goal>repackage</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<mainClass>${start-class}</mainClass>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+            
+            <!--See readme.txt!!! use hibernate3-maven-plugin for JPA Entity classes 
+				generation. -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<components>
+						<component>
+							<name>hbm2java</name>
+							<implementation>jdbcconfiguration</implementation>
+							<outputDirectory>src/main/java</outputDirectory>
+						</component>
+					</components>
+					<componentProperties>
+						<revengfile>src/main/resources/reverseEngineering.xml</revengfile>
+						<propertyfile>src/main/resources/application.properties</propertyfile>
+						<packagename>ru.sbrf.ufs.kmcib.entity</packagename>
+						<jdk5>true</jdk5>
+						<ejb3>true</ejb3>
+					</componentProperties>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>cglib</groupId>
+						<artifactId>cglib-nodep</artifactId>
+						<version>2.2.2</version>
+					</dependency>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>1.4.192</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+        </plugins>
+    </build>
+</project>

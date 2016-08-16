@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC
+  "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+<!-- Exclude system tables -->
+
+<type-mapping>
+ <!-- jdbc-type is name for java.sql.Types -->
+ <sql-type jdbc-type="VARCHAR" length='1' hibernate-type="yes_no" />
+ <!-- length, scale and precision can be used to specify the mapping precisely -->
+ <sql-type jdbc-type="NUMERIC"  precision='1' hibernate-type="boolean" /> 
+ <!-- the type-mappings are ordered. This mapping will be consulted last, 
+  thus overridden by the previous one if precision=1 for the column -->
+ <sql-type jdbc-type="NUMERIC"  hibernate-type="long" /> 
+</type-mapping>
+
+  <table-filter match-name="DATABASECHANGELOG" exclude="true" />
+  <table-filter match-name="DATABASECHANGELOGLOCK" exclude="true"/>
+</hibernate-reverse-engineering>

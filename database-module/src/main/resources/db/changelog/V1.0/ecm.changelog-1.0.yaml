@@ -1,0 +1,89 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTable ECM_DOCUMENT
+      author: gritsynada
+      changes:
+          - createTable:
+              columns:
+                  - column:
+                     name: id
+                     type: BIGINT
+                     constraints:
+                            nullable: false
+                            primaryKey: true
+                            unique: true
+                            autoIncrement: true
+                  - column:
+                     name: name
+                     type: varchar(255)
+                  - column:
+                     name: isFolder
+                     type: boolean
+                  - column:
+                     name: parentId
+                     type: BIGINT
+                  - column:
+                     name: attrs
+                     type: varchar(200)
+                  - column:
+                     name: contentId
+                     type: BIGINT
+                  - column:
+                     name: class
+                     type: varchar(200) 
+                  - column:
+                     name: annotation
+                     type: varchar(200)                      
+              remarks: Document or folder table. (Flag isFolder)
+              schemaName: public
+              tableName: ECM_DOCUMENT
+  
+  - changeSet:
+      id: createTable ECM_DOCUMENT_CONTENT
+      author: gritsynada
+      changes:
+          - createTable:
+              columns:
+                  - column:
+                     name: id
+                     type: BIGINT
+                     constraints:
+                            nullable: false
+                            primaryKey: true
+                            unique: true
+                            autoIncrement: true
+                  - column:
+                     name: type
+                     type: varchar(255)
+                  - column:
+                     name: content
+                     type: BLOB                    
+              remarks: Document content table
+              schemaName: public
+              tableName: ECM_DOCUMENT_CONTENT              
+         
+  - changeSet:
+     id: addForeignKeyConstraint to parent ECM_DOCUMENT
+     author: gritsynada
+     changes:
+     - addForeignKeyConstraint:
+         baseColumnNames:   parentId
+         baseTableName: ECM_DOCUMENT
+         constraintName: fk_ecm_document_ecm_document
+         onDelete: CASCADE
+         onUpdate: RESTRICT
+         referencedColumnNames: id
+         referencedTableName: ECM_DOCUMENT
+         
+  - changeSet:
+     id: addForeignKeyConstraint to content  ECM_DOCUMENT
+     author: gritsynada
+     changes:
+     - addForeignKeyConstraint:
+         baseColumnNames:   contentId
+         baseTableName: ECM_DOCUMENT
+         constraintName: fk_ecm_document_ecm_document_content
+         onDelete: CASCADE
+         onUpdate: RESTRICT
+         referencedColumnNames: id
+         referencedTableName: ECM_DOCUMENT_CONTENT
